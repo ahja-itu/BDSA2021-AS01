@@ -1,0 +1,73 @@
+% https://da.overleaf.com/latex/templates/cs310-assignment-template/qrqpndrxpcht
+%%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{wrapfig}
+
+\hypersetup{%
+    colorlinks=true,
+    linkcolor=blue,
+    linkbordercolor={0 0 1}
+}
+
+\renewcommand{\labelenumii}{\theenumii}
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+%%%%%%%%%%%%%%%%%%%%%%%% CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\newcommand\course{BDSA2021}
+\newcommand\semester{\today}
+\newcommand\hwnumber{01}         % <-- ASSIGNMENT #
+\newcommand\NetIDa{Andreas Wachs Hjalager}      % <-- YOUR NAME
+\newcommand\NetIDb{19167}      % <-- STUDENT ID #
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+%%%%%%%%%%%%%%%%% DO NOT CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{\NetIDa}
+\lhead{\NetIDa\\Student ID: \NetIDb}
+\chead{\textbf{\Large Assignment \hwnumber}}
+\rhead{\course \\ \semester}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
+
+\lstdefinestyle{sharpc}{language=[Sharp]C}
+\lstset{style=sharpc}
+
+\begin{document}
+\section{C\#}
+\subsection{Generics}
+The type constraints for the first version of \lstinline{GreaterCount}, it constraints the type
+\lstinline{T} to be implementing the \lstinline{IComparable} interface, ensuring that items of type \lstinline{T}
+can be compared between themselves. The generic type \lstinline{U} is not having any constraints applied to it,
+but it is neither used in this case. 
+
+Additionally, the \lstinline{item} object type needs to be implementing \lstinline{IEnumerable} with the 
+generic type \lstinline{T} provided.
+
+The type constraints for the second version of \lstinline{GreaterCount}, we achieve the same result as the above answer,
+but through transitivity where the constraints are that \lstinline{T} is of same type of \lstinline{U} and type \lstinline{U} 
+implements the \lstinline{IComparable} type with type \lstinline{U}. This is only accepted if the \lstinline{IComparable} interface
+allows for implementations for the type \lstinline{U}.
+\end{document}
+
+    
