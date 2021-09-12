@@ -36,7 +36,17 @@ namespace Assignment1
 
         public static IEnumerable<string> InnerText(string html, string tag)
         {
-            throw new NotImplementedException();
+            var regex = new Regex($"<{tag}.*?>(?'innertext'.*?)</{tag}>");
+            
+            // this matches all opening and closing tags
+            // use it to clean out tags from matches
+            var tagPattern = @"<(?!\/\/).*?>";
+
+            foreach(Match match in regex.Matches(html))
+            {
+                string innertext = match.Groups["innertext"].ToString();
+                yield return Regex.Replace(innertext, tagPattern, "");   
+            }
         }
     }
 }
