@@ -15,6 +15,31 @@
 \usepackage{listings}
 \usepackage{float}
 \usepackage{wrapfig}
+\usepackage{setspace} % for \onehalfspacing and \singlespacing macros
+\usepackage{etoolbox}
+
+\AtBeginEnvironment{quote}{\par\singlespacing\small}
+
+\definecolor{BackgroundColor}{rgb}{0.9,0.9,0.9}
+\definecolor{OliveGreen}{rgb}{0,0.6,0}
+
+\lstset{
+  basicstyle=\normalsize\fontencoding{T1}\ttfamily,
+  language=C++,
+  backgroundcolor=\color{BackgroundColor},
+  tabsize=4,
+  captionpos=b,
+  %tabsize=3,
+  frame=lines,
+  numbers=left,
+  numberstyle=\tiny,
+  numbersep=5pt,
+  breaklines=true,
+  showstringspaces=false,
+  keywordstyle=\color{blue},
+  commentstyle=\color{OliveGreen},
+  stringstyle=\color{red}
+  }
 
 \hypersetup{%
     colorlinks=true,
@@ -26,7 +51,7 @@
 \renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
 
 \setlength{\parindent}{0.0in}
-\setlength{\parskip}{0.05in}
+\setlength{\parskip}{0.1in}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% }
 
 %%%%%%%%%%%%%%%%%%%%%%%% CHANGE HERE %%%%%%%%%%%%%%%%%%%% {
@@ -54,6 +79,14 @@
 \lstset{style=sharpc}
 
 \begin{document}
+\section{GitHub repository link}
+
+You should be able to click a link right \href{https://github.com/andreaswachs/BDSA2021-AS01}{here}, 
+otherwise the link will be displayed just below, for you to copy:
+
+\lstinline{https://github.com/andreaswachs/BDSA2021-AS01}
+
+
 \section{C\#}
 \subsection{Generics}
 The type constraints for the first version of \lstinline{GreaterCount}, it constraints the type
@@ -68,6 +101,134 @@ The type constraints for the second version of \lstinline{GreaterCount}, we achi
 but through transitivity where the constraints are that \lstinline{T} is of same type of \lstinline{U} and type \lstinline{U} 
 implements the \lstinline{IComparable} type with type \lstinline{U}. This is only accepted if the \lstinline{IComparable} interface
 allows for implementations for the type \lstinline{U}.
+
+\section{Software Engineering}
+\subsection{Exercise 1}
+
+\begin{quote}
+  \textit{"Knowledge acquisition is not sequential"} - Bruegge \& Dutoit  
+\end{quote}
+
+Bruegge and Dutoit state that the process of acquiring knowledge is not a linear process.
+We are not going to learn everything that we will from a software project in a nice, linear manner.
+They also state that a single piece of information can reset the estimated remaining effort
+that a software project needs in order to be done.
+
+An example of this stems from my own 1st year software project. This was a project about
+drawing the map of Denmark from XML data from Open Street Maps. We had implemented data structures
+to save spacial data and were working on path finding, to find the shortest path between two
+point on the map. We got done implementing the shortest path algorithm based on 
+Dijkstra's shortest path algorithm with the A* optimization. When immediately implemented 
+we thought that we had finished all the work in regards to finding paths on the map, but we
+discovered a large amount of edge cases that came to life from working with the complete
+map of Denmark. The effort into making the path finding algorithm behave \textit{correctly}
+stretched on for quite some time after we expected to be done with all work in regards to path finding.
+
+\subsection{Exercise 2}
+
+\begin{quote}
+  \textit{“The ticket distributor is composed of a user interface subsystem, a subsystem for computing tariff, and a network subsystem managing communication with the central computer.”}
+\end{quote}
+
+This decision were made during the \textbf{requirements elicitation}. This decision makes
+an abstract claim of how the ticket distributor is composed, but doesn't describe technical details.
+
+\begin{quote}
+  \textit{“The ticket distributor will use PowerPC processor chips.”}
+\end{quote}
+
+This decision were made during the system design phase. The decision dives into a very
+specific technical detail. 
+
+\begin{quote}
+  \textit{“The ticket distributor provides the traveler with an on-line help.”}
+\end{quote}
+
+This decision was made during the requirements elicitation. This decision is still very abstract
+and doesn't go into technical details.
+
+\subsection{Exercise 3}
+
+The term \textit{account} is used as an application domain concept for only the first sentence:
+
+\begin{quote}
+  \textit{"Assume you are developing an online system for managing bank accounts for mobile customers"}
+\end{quote}
+
+Here it is explained how it fits together in the solution (that it is managed by the system that the
+software engineers will develop).
+
+
+Right after the first sentence, the text uses the concept of an \textit{account} in the solution domain
+as it is now being discussed how to solve some practical problems that affect the solution domain (lack of network connectivity):
+
+\begin{quote}
+  \textit{"A major design issue is how to provide access to the accounts when the customer cannot establish an online connection. One proposal is that accounts are made available on the mobile computer, even if the server is not up. In this case, the accounts show the amounts from the last connected session"}
+\end{quote}
+
+\subsection{Exercise 4}
+
+On the difference between building airplanes, bridges and software.
+
+When building airplanes and bridges, you firstly build them such that they obey physical law that 
+needs to be kept in order for them to operate. Bridges needs to be able to carry the weight of
+all the traffic that crosses it; the airplane needs to be sufficiently aerodynamic and powerful, 
+such that it can gain flight. While building airplanes is a modern endeavor, building
+means of transportation has been around for ages. Building bridges has been done since the dawn
+of civilization.
+
+When building software, there are not in the same way these physical bounds. 
+These physical products doesn't have to conform to physical laws of aerodynamics. They
+have no physical shape. A bridge or an airplane will quickly be deemed fit to work when built,
+because its flaws are visibly apparent - this is not the case for software. For example,
+we can have deadlocks and "off-by-one" errors in the hiding for a long time before
+they are discovered where they might invalidate near uncountably many person hours.
+
+Building software is also difficult because they are mostly built to serve a purpose in 
+a certain application domain that a customer exists in. The people who make the software 
+are not necessarily part of that application domain - and they have to model a solution domain 
+to model the application domain. The validity of the software products is therefore limited 
+by the software developers understanding of the application domain. 
+
+\subsection{Exercise 5}
+
+\begin{enumerate}
+    \item \textit{“The TicketDistributor must enable a traveler to buy weekly passes.”}
+    
+    This is a functional requirements.
+    \item \textit{“The TicketDistributor must be written in Java.”}
+    
+    This is a non-functional requirement.
+    \item \textit{“The TicketDistributor must be easy to use.”}
+    
+    This is a non-functional requirement.
+    \item \textit{“The TicketDistributor must always be available.”}
+    
+    This is a non-functional requirement.
+    \item \textit{“The TicketDistributor must provide a phone number to call when it fails.”}
+
+    This is a functional requirement. 
+\end{enumerate}
+
+
+\subsection{Exercise 6}
+
+\begin{quote}
+  \textbf{"What is the purpose of modeling?"}
+\end{quote}
+
+The purpose of modeling is to represent a complex system, in part or in whole, at 
+the appropriate level of abstraction. By this, we can hide a lot of technical details that
+might get in the way of an overview that we'd like to have of a system.
+
+This is useful for software engineers that needs to develop software systems to be used in
+application domains that are outside of their primary field of work. This means that we can model
+application domains with just enough knowledge to be able to craft a software system for it.
+
+The modeling of the application domain leads to the opportunity to be able to model
+the solution domain, with the given object oriented methods given in the 
+Object-Oriented Software Engineering (Bruegge \& Dutoit, 2010). 
+
 \end{document}
 
     
